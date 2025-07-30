@@ -165,7 +165,7 @@ if (age > 20) {
 
 
 // el ; significa final de instruccion 
- 
+
 
 
 let prueba; //variable indefinida --> es como si fuese false para las condiciones
@@ -191,10 +191,10 @@ console.log('primera'); console.log('segunda')
 
 age = 18
 
-if (age>15 && age < 21) {
+if (age > 15 && age < 21) {
   console.log('puedes manejar pero no tomar')
-} 
-if (age<16 || age > 100) {
+}
+if (age < 16 || age > 100) {
   console.log('ni por mucho ni por poco')
 }
 
@@ -202,7 +202,304 @@ if (prueba || test) {
   console.log('con uno me basta')
 }
 
-if (age>15 && !prueba) {
+if (age > 15 && !prueba) {
   console.log('es mayor a 15 y test tiene informacion')
 }
 
+
+let alive = false
+
+// ternarias
+
+// condicion ? true : false 
+//SIMPLE
+
+alive ? console.log('avemus vida!') : console.log('zombie!!!!')
+age = 25
+age === 18 ? console.log('tienes 18 años') : console.log("no se que edad tienes")
+age > 20 ? console.log('puedes tomar') : console.log('zumito')
+//ESTO SE DEBE EVITAR A TODA COSTA!!!!
+//anidar ternarias
+age === 20 ? console.log('tienes 20') : age > 20 ? console.log('eres mayor de 20') : console.log('eres menor de 20')
+
+// arrays y objetos
+
+//array --> []
+//dentro del array, puede haber todo tipo de dato
+// los datos no tiene por que estar relacionados 
+
+// se usan MUUUUUUUUUCCHCCCHHHHOOOOO para almacenar datos
+// las posiciones (indices) de los arrays empiezan SIEMPRE en 0
+// los arrays siempre CONST
+// los arrays originales NO SE MODIFICAN
+const arr = [25, 58, 65, 32, 15, 78, 163653]
+
+console.log(arr)
+console.table(arr)
+console.log(arr[0])
+console.log(arr[1])
+
+console.log(arr.length) //devuelve el largo del array--> comienza a contar en 1 
+console.log(arr[arr.length]) //--> devuelve undefined 
+console.log(arr[arr.length - 1]) // devuelve el ultimo elemento del array
+
+
+arr[0] = 50 //puedo modificar los valores del array
+
+arr[0] = arr[1] + arr[3]
+console.log(arr)
+
+arr.push('pepe', 'matia') // añade al final del array el elemento
+console.log('antes de pop', arr)
+arr.pop() // elimina ultimo elemento del array
+console.log('despues de pop', arr)
+arr.shift() // elimina primer elemento del array
+console.log(arr)
+arr.unshift('lola', 'barbara') // inserta al principio el elemento
+console.log(arr)
+
+console.table(arr)
+//slice no modifica el array original
+// slice(3,6) --> empieza en posicion 3, termina en posicion 6
+const slicedArr = arr.slice(3, 6)
+
+console.table(slicedArr)
+console.table(arr)
+
+//splice --> OJO!!! MODIFICA EL ARRAY
+// splice(0,1) --> empieza en posicion 0 y elimina 1 elemento
+
+const newArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+newArr.splice(1, 1) //desde la posicion 1, elimina un elemento
+console.table(newArr)
+newArr.splice(3, 3) // desde la posicion 3, elimina 3 elementos
+console.table(newArr)
+
+//como insertar informacion en cualquier lugar del array???
+//splice(3,0,'zombie') --> en la posicion 3, el 0 es para que no elimine elementos, 'zombie'  es el elemento a insertar
+newArr.splice(3, 0, 'zombie') // --> inserta en la posicion 3, el elemento 'zombie'
+console.table(newArr)
+newArr.splice(3, 1, 'walking dead')// -> cambia el elemento de la tercera posicion por 'walking dead'
+console.table(newArr)
+//ejemplo de Juan
+newArr.splice(3, 3, 'pepe', 'lola', 'maria', 'matia') // desde la posicion 3, elimina 3 elementos e inserta todos los 
+// que escriba separados por coma
+console.table(newArr)
+
+
+const partyArr = ['pepe', 'maria', 'lola', 'matia']
+// lola y matia se han ido a hablar a solas PERO no se han ido. crear un array para ellos dos
+//  const slicedArr = arr.slice(3, 6)
+const priv = partyArr.slice(2, partyArr.length)
+console.table(partyArr)
+console.log('priv', priv)
+//no invitaron a la fiesta a Barbara, como podemos insertarla entre maria y lola?
+partyArr.splice(2, 0, 'Barbara')
+console.log(partyArr)
+// pepe y maria se han ido de la fiesta, quitalos del array?
+partyArr.splice(0, 2)
+console.log(partyArr)
+
+
+
+//objetos
+// se definen por {}
+// se almacena con pares llave: valor --> llave o propiedad
+// describen algo
+// siempre const
+
+const person = {
+  name: 'Pepe',
+  age: 50,
+  obj: {
+    quejesto: 'madre mia',
+    inception: {
+      actor: 'ese mismo'
+    }
+  }
+}
+
+console.log(person)
+console.table(person)
+
+console.log(person.age)
+console.log(person.name)
+console.log(person.obj.quejesto)
+console.log(person.obj.inception.actor)
+
+person.age = 25
+console.log(person)
+delete person.obj
+console.log(person)
+
+
+//si el objeto no tiene una propiedad pero le damos valor, la crea
+console.log(person.city)
+person.city = 'Sevilla'
+console.log(person.city)
+console.log(person)
+person.cty = 'Madrid'
+console.log(person)
+
+
+// funciones
+
+// una funcion, una unica responsabilidad
+
+function funcClasica() {
+  //bloque de codigo
+  return
+}
+
+//funcion flecha 
+const arrowFunc = () => {
+  //bloque de codigo
+  return
+}
+//declaracion de una funcion
+const myFunc = () => {
+  console.log('pepe se prepara para estar en funcion')
+  return 'pepe esta funcion'
+}
+
+//NO SE DEBE HACER  
+const badFunc = () => {
+  return console.log('mal!') // nunca!
+}
+
+//ejecucion de una funcion
+console.log(myFunc())
+console.log(badFunc())
+badFunc()
+
+//console log en funcion siempre en el bloque de codigo
+
+//cuando pensamos en 'voy a hacer una funcion para saludar' hablamos de lo que retorna la funcion
+
+const saludar = () => {
+  return 'Hola'
+}
+
+console.log('saludar con () ', saludar()) // () es para ejecutar
+
+console.log('saludar sin () ', saludar) // sin parentesis NO ejecuta la funcion
+
+const sumDeDosMasDos = () => {
+  const total = 2 + 2
+  return total
+}
+
+console.log(sumDeDosMasDos())
+
+
+//parametros
+
+// parametros van a ser como variables que va  atilizar la funcion para ejecutar su codigo
+
+const saludarV2 = (nombre) => {
+  console.log('valor de nombre ->', nombre)
+  return `hola ${nombre}`
+}
+
+console.log(saludarV2('Pepe'))
+console.log(saludarV2('Lola'))
+console.log(saludarV2('Barbara'))
+console.log(saludarV2('Matia'))
+
+
+const sumOfTwoNumbers = (num1, num2) => {
+  const total = num1 + num2
+  console.log('numOne->', num1, 'numTwo->', num2)
+  console.log('la suma es->', total)
+  return total
+}
+
+console.log(sumOfTwoNumbers(5, 3))
+console.log(sumOfTwoNumbers(5, 5))
+console.log(sumOfTwoNumbers(87, 42))
+console.log(sumOfTwoNumbers(852, 746))
+
+//las funciones flechas, si reciben un unico parametro, se pueden escribir SIN parentesis
+const nuevoSaludo = nombre => {
+  return `Hola de nuevo ${nombre}`
+}
+
+
+console.log(nuevoSaludo('pepe'))
+
+//cuando declaramos una funcion, los parentesis solo son obligados si no recibimos parametros o recibimos mas de uno
+
+const multiplicacion = (a, b, c) => a * b * c
+
+//al declarar una funcion flecha, si no voy a dar mas de un paso logico (una instruccion) pueden devolver directamente (escribir sin los {})
+// const nuevoSaludo = nombre => `Hola de nuevo ${nombre}`
+
+console.log(multiplicacion(2, 5, 8))
+
+
+const personDescribe = (name, age=29, city='Valencia') => {
+  return `Se llama ${name}, tiene ${age} de edad y vivie en ${city}.`
+}
+
+console.log(personDescribe('Pepe', 22, 'Madrid'))
+//el orden importa
+console.log(personDescribe(22, 'Madrid', 'Pepe'))
+console.log(personDescribe('Lola'))
+
+const isGreaterThanFive = (num) => {
+  return num>5 ? 'es mayor' : 'es menor'
+}
+
+console.log(isGreaterThanFive(8))
+
+const isGreaterThanOrEqualToTen = (num) => {
+  if (num>=10) {
+    return 'es mayor' //en el return termina la funcion
+  }
+  console.log('si es menor me ejecuto')
+  return 'es menor'
+}
+
+console.log(isGreaterThanOrEqualToTen(2))
+
+//funcion con array
+const arrPrueba = [1,2]
+console.log(arrPrueba)
+const addToArr = (arr, num) => {
+  arr.push(num)
+  return arr
+}
+
+console.log(arrPrueba)
+console.log(addToArr(arrPrueba, 99))
+
+const newObj = {
+  model: 'c-hr'
+}
+
+const addToObj = (obj, key, value) => {
+  //cuando decimos obj.algo ese algo JS lo toma como llave
+  //siempre que sea de manera dinamica (por variables) utilizamos [] 
+  return obj[key] = value
+}
+console.log(newObj)
+addToObj(newObj, 'year', 2008)
+console.log(newObj)
+addToObj(newObj, 'brand', 'toyota')
+console.log(newObj)
+
+
+//obj.city ---> js entiende que el objeto tiene la llave city y si no la tiene, la crea si le asignamos un valor
+newObj.owner = 'Pepe'
+console.log(newObj)
+console.log(newObj.owner) // se usa mas cuando accedemos directamente a una llave
+
+console.log(newObj['owner'])//se usa mas cuando vamos a usar una variable como llave
+const key = 'model'
+
+console.log(newObj[key]) // devolvera en dependecia del valor de la variable key
+// loops
+
+
+
+// switch
